@@ -1,16 +1,16 @@
 # Customer Churn Analysis & Prediction
 
-A Machine Learning project that analyzes customer behavior and predicts whether a customer is likely to churn using a Random Forest classifier.
+A Machine Learning project that analyzes customer behavior and predicts whether a customer is likely to churn using a Random Forest Classifier.
 
 ## 🚀 Live Demo
 
-**Streamlit App:** https://customer-churn-analysis-gkpfhdqhbndmzboak5z6xq.streamlit.app/
+**[Launch Customer Churn Prediction App](https://customer-churn-analysis-gkpfhdqhbndmzboak5z6xq.streamlit.app/)**
 
 ## 📌 Project Overview
 
-Customer churn is a major challenge for subscription-based businesses. This project uses the Telco Customer Churn dataset to analyze customer characteristics and build a machine learning model that predicts customer churn.
+Customer churn is a major challenge for subscription-based businesses. This project uses the Telco Customer Churn dataset to analyze customer characteristics and build a machine learning model that predicts whether a customer is likely to churn.
 
-The trained model is integrated into a Streamlit web application where users can enter customer details and receive a churn prediction with probability.
+The trained model is integrated into a Streamlit web application where users can enter customer details and receive a churn prediction along with the probability of churn.
 
 ## 🛠️ Technologies Used
 
@@ -51,10 +51,10 @@ The dataset contains customer information such as:
 
 1. Data loading
 2. Data cleaning
-3. Handling categorical variables
-4. Feature encoding
-5. Feature scaling
-6. Train-test split
+3. Handling missing values
+4. Categorical feature encoding
+5. Train-test split
+6. Feature scaling
 7. Model training
 8. Model evaluation
 9. Model serialization using Joblib
@@ -64,23 +64,26 @@ The dataset contains customer information such as:
 
 ### Random Forest Classifier
 
-The Random Forest model was selected as the final model for the application.
+A **Random Forest Classifier** is used as the final prediction model.
 
-The model uses customer demographic, service, contract, and billing information to predict churn.
+The model uses customer demographic, service, contract, and billing information to predict whether a customer is likely to churn.
 
-### Model Performance
+### 📈 Model Performance
 
 Test-set results:
 
 | Metric           | Score |
+| ---------------- | ----: |
 | Accuracy         |  ~78% |
 | Class 0 F1-score |  0.84 |
 | Class 1 F1-score |  0.61 |
 
-Confusion Matrix:
+### Confusion Matrix
 
+```text
 [[851, 185],
  [128, 245]]
+```
 
 The model performs differently across the two classes, with lower recall and F1-score for the churn class. This is an important consideration because identifying customers who are likely to churn is the main objective of the project.
 
@@ -98,13 +101,14 @@ The Streamlit application allows users to enter customer information including:
 * Contract type
 * Payment method
 
-The application then returns:
+The application provides:
 
-* Churn prediction
-* Probability of churn
+* **Churn / Stay prediction**
+* **Churn probability**
 
 ## 📁 Project Structure
 
+```text
 customer-churn-analysis/
 │
 ├── app.py
@@ -114,14 +118,16 @@ customer-churn-analysis/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 
 ## 🔮 Future Improvements
 
 * Add Explainable AI using SHAP
 * Improve minority-class detection
-* Experiment with additional ML models
+* Experiment with additional machine learning models
 * Add interactive data visualizations
-* Improve model performance through hyperparameter tuning
+* Perform hyperparameter tuning
+* Improve overall model performance
 
 ## 👨‍💻 Author
 
@@ -129,4 +135,4 @@ customer-churn-analysis/
 
 AI & Data Science Student | Aspiring Data Scientist
 
-GitHub: https://github.com/bansod-dev
+**GitHub:** [bansod-dev](https://github.com/bansod-dev)
