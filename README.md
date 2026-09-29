@@ -73,17 +73,14 @@ The model uses customer demographic, service, contract, and billing information 
 Test-set results:
 
 | Metric           | Score |
-| ---------------- | ----: |
 | Accuracy         |  ~78% |
 | Class 0 F1-score |  0.84 |
 | Class 1 F1-score |  0.61 |
 
 Confusion Matrix:
 
-```text
 [[851, 185],
  [128, 245]]
-```
 
 The model performs differently across the two classes, with lower recall and F1-score for the churn class. This is an important consideration because identifying customers who are likely to churn is the main objective of the project.
 
@@ -108,7 +105,6 @@ The application then returns:
 
 ## 📁 Project Structure
 
-```text
 customer-churn-analysis/
 │
 ├── app.py
@@ -118,33 +114,6 @@ customer-churn-analysis/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
-```
-
-## ⚙️ Run Locally
-
-Clone the repository:
-
-```bash
-git clone https://github.com/bansod-dev/customer-churn-analysis.git
-```
-
-Navigate to the project directory:
-
-```bash
-cd customer-churn-analysis
-```
-
-Install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the Streamlit application:
-
-```bash
-streamlit run app.py
-```
 
 ## 🔮 Future Improvements
 
