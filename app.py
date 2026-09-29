@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import shap
 
 model = joblib.load("churn_random_forest.pkl")
 scaler = joblib.load("churn_scaler.pkl")
@@ -216,3 +217,46 @@ if st.button("🔮 Predict Churn", use_container_width=True):
     )
 
     st.progress(float(probability))
+
+    st.divider()
+
+    st.subheader("🔍 Why did the model make this prediction?")
+
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(input_df)
+
+    if isinstance(shap_values, list):
+        feature_shap = shap_values[1][0]
+    elif len(shap_values.shape) == 3:
+        feature_shap = shap_values[0, :, 1]
+    else:
+        feature_shap = shap_values[0]
+
+    explanation_df = pd.DataFrame({
+        "Feature": columns,
+        "SHAP Value": feature_shap
+    })
+
+    explanation_df["Impact"] = explanation_df["SHAP Value"].apply(
+        lambda x: "Increases Churn" if x > 0 else "Decreases Churn"
+    )
+
+    explanation_df["Absolute Impact"] = explanation_df["SHAP Value"].abs()
+
+    explanation_df = explanation_df.sort_values(
+        "Absolute Impact",
+        ascending=False
+    ).head(10)
+
+    st.dataframe(
+        explanation_df[
+            ["Feature", "SHAP Value", "Impact"]
+        ],
+        use_container_width=True,
+        hide_index=True
+    )
+
+    st.caption(
+        "Positive SHAP values push the prediction toward churn, "
+        "while negative values push it toward staying."
+    )
